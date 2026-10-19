@@ -48,14 +48,9 @@ function App() {
 
   useEffect(() => {
     loadWeather();
-  }, [
-    temperature,
-    windSpeed,
-    temperatureUnit,
-    windSpeedUnit,
-    temperatureUnitMark,
-    windSpeedUnitMark,
-  ]);
+    const intervalId = setInterval(loadWeather, 60000);
+    return () => clearInterval(intervalId);
+  }, [temperature, windSpeed, temperatureUnit, windSpeedUnit]);
 
   return (
     <div className={styles.conteiner}>
