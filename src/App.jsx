@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import WeatherDisplay from "./components/WeatherDisplay";
 import { useEffect, useState } from "react";
 import getWeather from "./api";
@@ -16,7 +16,7 @@ function App() {
 
   const loadWeather = () => {
     setIsFetching(true);
-    getWeather({temperatureUnit, windSpeedUnit})
+    getWeather({ temperatureUnit, windSpeedUnit })
       .then((data) => {
         const {
           current: {
@@ -58,20 +58,24 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className={styles.conteiner}>
       <UnitSelection
         windSpeedUnit={windSpeedUnit}
         temperatureUnit={temperatureUnit}
         temperatureUnitChange={handleTemperatureUnitChange}
         windSpeedUnitChange={handleWindSpeedUnitChange}
       />
-      <WeatherDisplay
-        windSpeed={windSpeed}
-        temperature={temperature}
-        temperatureUnitMark={temperatureUnitMark}
-        windSpeedUnitMark={windSpeedUnitMark}
-      />
-    </>
+      {error && <div>!!!Error!!!</div>}
+      {isFetching && <div>Loading...</div>}
+      {!error && !isFetching && (
+        <WeatherDisplay
+          windSpeed={windSpeed}
+          temperature={temperature}
+          temperatureUnitMark={temperatureUnitMark}
+          windSpeedUnitMark={windSpeedUnitMark}
+        />
+      )}
+    </div>
   );
 }
 

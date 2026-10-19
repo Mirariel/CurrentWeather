@@ -1,3 +1,5 @@
+import styles from "./UnitSelection.module.sass";
+
 function UnitSelection(props) {
   const {
     windSpeedUnit,
@@ -7,11 +9,12 @@ function UnitSelection(props) {
   } = props;
 
   return (
-    <section>
-      <div>
-        <span>Wind speed unit:</span>
+    <section className={styles.unitSection}>
+      <div className={styles.selectUnitContainer}>
+        <span className={styles.unitTarget}>Wind speed unit:</span>
 
         <select
+          className={styles.unitSelect}
           name="windSpeedUnit"
           value={windSpeedUnit}
           onChange={windSpeedUnitChange}
@@ -21,9 +24,10 @@ function UnitSelection(props) {
         </select>
       </div>
 
-      <div>
-        <span>Temperatre unit:</span>
+      <div className={styles.selectUnitContainer}>
+        <span className={styles.unitTarget}>Temperatre unit:</span>
         <select
+          className={styles.unitSelect}
           name="temperatureUnit"
           value={temperatureUnit}
           onChange={temperatureUnitChange}

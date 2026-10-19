@@ -1,0 +1,7 @@
+.conteiner {
+  background-color: violet;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
